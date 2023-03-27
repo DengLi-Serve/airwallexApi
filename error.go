@@ -5,8 +5,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
-	"sync"
-	"time"
 )
 
 //http请求状态码
@@ -41,27 +39,23 @@ var apiErrorCodes = map[string]string{
 	"unsupported_payment_method":        "所选择的支付方式对所选择的受益银行国家和支付货币不可用",
 }
 
-var tokenMutex sync.Mutex
+var tokenTryNum int
 
 func (a *Airwallex) errorHandling(res *http.Response) error {
 	switch res.StatusCode {
 	case HttpStatusOk, HttpStatusCreated:
 		return nil
 	case HttpStatusUnauthorized:
-		var e error
-		//加锁防止一直触发
-		if tokenMutex.TryLock() {
-			//token鉴权问题,重新获取鉴权
-			for i := 0; i < 3; i++ {
-				fmt.Println("重新获取token: ", i)
-				e = a.obtainAccessToken()
-				if e == nil {
-					return nil
-				}
-				time.Sleep(1 * time.Second)
-			}
-			tokenMutex.Unlock()
+		if tokenTryNum == 4 {
+			return errors.New("unauthorized try four error")
 		}
+		var e error
+		e = a.obtainAccessToken()
+		if e == nil {
+			tokenTryNum = 0
+			return nil
+		}
+		tokenTryNum += 1
 		return e
 	default:
 		body, _ := ioutil.ReadAll(res.Body)
