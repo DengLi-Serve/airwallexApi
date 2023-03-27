@@ -1,3 +1,3 @@
-module github.com/DengLi-Serve/airwallex
+module github.com/DengLi-Serve/airwallexApi
 
 go 1.16
