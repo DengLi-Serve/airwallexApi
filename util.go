@@ -1,4 +1,4 @@
-package airwallex
+package airwallexApi
 
 type apiInfo struct {
 	method  string

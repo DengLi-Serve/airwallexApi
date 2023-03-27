@@ -1,4 +1,4 @@
-package airwallex
+package airwallexApi
 
 type Option func(*Airwallex)
 

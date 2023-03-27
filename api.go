@@ -1,8 +1,8 @@
-package airwallex
+package airwallexApi
 
 import (
 	"fmt"
-	"github.com/DengLi-Serve/airwallex/airwallex_struct"
+	"github.com/DengLi-Serve/airwallexApi/airwallex_struct"
 )
 
 func (a *Airwallex) obtainAccessToken() error {
