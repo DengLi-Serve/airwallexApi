@@ -58,12 +58,12 @@ func New(clientId, apiKey string, Option ...Option) *Airwallex {
 type request struct {
 	method    string            //发送请求的方式默认Post
 	heard     map[string]string //请求头默认设置 {"Content-Type": "application/json","Authorization":全局token}
-	param     any               //请求所需要的参数
+	param     interface{}       //请求所需要的参数
 	apiPath   string            //要请求的api路径
 	isFileUrl bool              //是否使用文件URL发送请求
 }
 
-func (a *Airwallex) sendRequest(resp any) error {
+func (a *Airwallex) sendRequest(resp interface{}) error {
 	paramJson, _ := json.Marshal(a.request.param)
 	param := bytes.NewBuffer(paramJson)
 	client := &http.Client{}
