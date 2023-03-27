@@ -43,7 +43,7 @@ var apiErrorCodes = map[string]string{
 
 var tokenMutex sync.Mutex
 
-func (a *airwallex) errorHandling(res *http.Response) error {
+func (a *Airwallex) errorHandling(res *http.Response) error {
 	switch res.StatusCode {
 	case HttpStatusOk, HttpStatusCreated:
 		return nil

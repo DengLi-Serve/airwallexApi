@@ -18,7 +18,7 @@ const (
 	FileUrl     = "https://files.airwallex.com" //正式线
 )
 
-type airwallex struct {
+type Airwallex struct {
 	clientId                     string
 	apiKey                       string
 	url                          string
@@ -29,8 +29,8 @@ type airwallex struct {
 
 var AuthorizationToken string
 
-func New(clientId, apiKey string, Option ...Option) *airwallex {
-	a := &airwallex{
+func New(clientId, apiKey string, Option ...Option) *Airwallex {
+	a := &Airwallex{
 		clientId: clientId, //airwallex的clientId
 		apiKey:   apiKey,   //airwallex的apiKey
 		url:      Url,      //airwallex请求地址
@@ -63,7 +63,7 @@ type request struct {
 	isFileUrl bool              //是否使用文件URL发送请求
 }
 
-func (a *airwallex) sendRequest(resp any) error {
+func (a *Airwallex) sendRequest(resp any) error {
 	paramJson, _ := json.Marshal(a.request.param)
 	param := bytes.NewBuffer(paramJson)
 	client := &http.Client{}

@@ -1,11 +1,11 @@
 package airwallex
 
 import (
-	"airwallex/airwallex_struct"
 	"fmt"
+	"github.com/DengLi-Serve/airwallex/airwallex_struct"
 )
 
-func (a *airwallex) obtainAccessToken() error {
+func (a *Airwallex) obtainAccessToken() error {
 	a.request = &request{
 		method:  MethodPost,
 		heard:   map[string]string{"Authorization": "", "x-api-key": a.apiKey, "x-client-id": a.clientId},
@@ -34,7 +34,7 @@ func (a *airwallex) obtainAccessToken() error {
 /*--Customers--*/
 
 // PaymentAcceptanceCustomersCreate 创建客户 对应官网参照地址:https://www.airwallex.com/docs/api#/Payment_Acceptance/Customers/_api_v1_pa_customers_create/post
-func (a *airwallex) PaymentAcceptanceCustomersCreate(param airwallex_struct.PaymentAcceptanceCustomersCreateReq, resp *airwallex_struct.PaymentAcceptanceCustomersCreateResp) error {
+func (a *Airwallex) PaymentAcceptanceCustomersCreate(param airwallex_struct.PaymentAcceptanceCustomersCreateReq, resp *airwallex_struct.PaymentAcceptanceCustomersCreateResp) error {
 	a.request = &request{
 		param:   param,
 		method:  apiPaths["PaymentAcceptance"]["Customers"]["Create"].method,
@@ -48,7 +48,7 @@ func (a *airwallex) PaymentAcceptanceCustomersCreate(param airwallex_struct.Paym
 }
 
 // PaymentAcceptanceCustomersRetrieve 客户检索 对应官网参照地址:https://www.airwallex.com/docs/api#/Payment_Acceptance/Customers/_api_v1_pa_customers__id_/get
-func (a *airwallex) PaymentAcceptanceCustomersRetrieve(param airwallex_struct.PaymentAcceptanceCustomersRetrieveReq, resp *airwallex_struct.PaymentAcceptanceCustomersRetrieveResp) error {
+func (a *Airwallex) PaymentAcceptanceCustomersRetrieve(param airwallex_struct.PaymentAcceptanceCustomersRetrieveReq, resp *airwallex_struct.PaymentAcceptanceCustomersRetrieveResp) error {
 	a.request = &request{
 		method:  apiPaths["PaymentAcceptance"]["Customers"]["Retrieve"].method,
 		apiPath: fmt.Sprintf(apiPaths["PaymentAcceptance"]["Customers"]["Retrieve"].apiPath, param.Id),
@@ -61,7 +61,7 @@ func (a *airwallex) PaymentAcceptanceCustomersRetrieve(param airwallex_struct.Pa
 }
 
 // PaymentAcceptanceCustomersUpdate 修改客户信息 对应官网参照地址:https://www.airwallex.com/docs/api#/Payment_Acceptance/Customers/_api_v1_pa_customers__id__update/post
-func (a *airwallex) PaymentAcceptanceCustomersUpdate(param airwallex_struct.PaymentAcceptanceCustomersUpdateReq, resp *airwallex_struct.PaymentAcceptanceCustomersUpdateResp) error {
+func (a *Airwallex) PaymentAcceptanceCustomersUpdate(param airwallex_struct.PaymentAcceptanceCustomersUpdateReq, resp *airwallex_struct.PaymentAcceptanceCustomersUpdateResp) error {
 	a.request = &request{
 		param:   param,
 		method:  apiPaths["PaymentAcceptance"]["Customers"]["Update"].method,
@@ -75,7 +75,7 @@ func (a *airwallex) PaymentAcceptanceCustomersUpdate(param airwallex_struct.Paym
 }
 
 // PaymentAcceptanceCustomersGenerateClientSecret 生成客户秘钥 对应官网参照地址:https://www.airwallex.com/docs/api#/Payment_Acceptance/Customers/_api_v1_pa_customers__id__generate_client_secret/get
-func (a *airwallex) PaymentAcceptanceCustomersGenerateClientSecret(param airwallex_struct.PaymentAcceptanceCustomersGenerateClientSecretReq, resp *airwallex_struct.PaymentAcceptanceCustomersGenerateClientSecretResp) error {
+func (a *Airwallex) PaymentAcceptanceCustomersGenerateClientSecret(param airwallex_struct.PaymentAcceptanceCustomersGenerateClientSecretReq, resp *airwallex_struct.PaymentAcceptanceCustomersGenerateClientSecretResp) error {
 	a.request = &request{
 		param:   param,
 		method:  apiPaths["PaymentAcceptance"]["Customers"]["GenerateClientSecret"].method,
@@ -89,7 +89,7 @@ func (a *airwallex) PaymentAcceptanceCustomersGenerateClientSecret(param airwall
 }
 
 // PaymentAcceptanceCustomersGetList 获取客户列表 对应官网参照地址:https://www.airwallex.com/docs/api#/Payment_Acceptance/Customers/_api_v1_pa_customers/get
-func (a *airwallex) PaymentAcceptanceCustomersGetList(param airwallex_struct.PaymentAcceptanceCustomersGetListReq, resp *airwallex_struct.PaymentAcceptanceCustomersGetListResp) error {
+func (a *Airwallex) PaymentAcceptanceCustomersGetList(param airwallex_struct.PaymentAcceptanceCustomersGetListReq, resp *airwallex_struct.PaymentAcceptanceCustomersGetListResp) error {
 	a.request = &request{
 		param:   param,
 		method:  apiPaths["PaymentAcceptance"]["Customers"]["GetList"].method,
@@ -105,7 +105,7 @@ func (a *airwallex) PaymentAcceptanceCustomersGetList(param airwallex_struct.Pay
 /*--PaymentConsents--*/
 
 // PaymentAcceptancePaymentConsentsCreate 创建付款同意书 对应官网参照地址:https://www.airwallex.com/docs/api#/Payment_Acceptance/Payment_Consents/_api_v1_pa_payment_consents_create/post
-func (a *airwallex) PaymentAcceptancePaymentConsentsCreate(param airwallex_struct.PaymentAcceptancePaymentConsentsCreateReq, resp *airwallex_struct.PaymentAcceptancePaymentConsentsCreateResp) error {
+func (a *Airwallex) PaymentAcceptancePaymentConsentsCreate(param airwallex_struct.PaymentAcceptancePaymentConsentsCreateReq, resp *airwallex_struct.PaymentAcceptancePaymentConsentsCreateResp) error {
 	a.request = &request{
 		param:   param,
 		method:  apiPaths["PaymentAcceptance"]["PaymentConsents"]["Create"].method,
@@ -119,7 +119,7 @@ func (a *airwallex) PaymentAcceptancePaymentConsentsCreate(param airwallex_struc
 }
 
 // PaymentAcceptancePaymentConsentsUpdate 修改付款同意书 对应官网参照地址:https://www.airwallex.com/docs/api#/Payment_Acceptance/Payment_Consents/_api_v1_pa_payment_consents__id__update/post
-func (a *airwallex) PaymentAcceptancePaymentConsentsUpdate(param airwallex_struct.PaymentAcceptanceCustomersUpdateReq, resp *airwallex_struct.PaymentAcceptanceCustomersUpdateResp) error {
+func (a *Airwallex) PaymentAcceptancePaymentConsentsUpdate(param airwallex_struct.PaymentAcceptanceCustomersUpdateReq, resp *airwallex_struct.PaymentAcceptanceCustomersUpdateResp) error {
 	a.request = &request{
 		param:   param,
 		method:  apiPaths["PaymentAcceptance"]["PaymentConsents"]["Update"].method,
@@ -133,7 +133,7 @@ func (a *airwallex) PaymentAcceptancePaymentConsentsUpdate(param airwallex_struc
 }
 
 // PaymentAcceptancePaymentConsentsVerify 验证付款同意书 对应官网参照地址:https://www.airwallex.com/docs/api#/Payment_Acceptance/Payment_Consents/_api_v1_pa_payment_consents__id__verify/post
-func (a *airwallex) PaymentAcceptancePaymentConsentsVerify(param airwallex_struct.PaymentAcceptanceCustomersGenerateClientSecretReq, resp *airwallex_struct.PaymentAcceptanceCustomersGenerateClientSecretResp) error {
+func (a *Airwallex) PaymentAcceptancePaymentConsentsVerify(param airwallex_struct.PaymentAcceptanceCustomersGenerateClientSecretReq, resp *airwallex_struct.PaymentAcceptanceCustomersGenerateClientSecretResp) error {
 	a.request = &request{
 		param:   param,
 		method:  apiPaths["PaymentAcceptance"]["PaymentConsents"]["Verify"].method,
@@ -147,7 +147,7 @@ func (a *airwallex) PaymentAcceptancePaymentConsentsVerify(param airwallex_struc
 }
 
 // PaymentAcceptancePaymentConsentsDisable 禁用付款同意书 对应官网参照地址:https://www.airwallex.com/docs/api#/Payment_Acceptance/Payment_Consents/_api_v1_pa_payment_consents__id__disable/post
-func (a *airwallex) PaymentAcceptancePaymentConsentsDisable(param airwallex_struct.PaymentAcceptanceCustomersGenerateClientSecretReq, resp *airwallex_struct.PaymentAcceptanceCustomersGenerateClientSecretResp) error {
+func (a *Airwallex) PaymentAcceptancePaymentConsentsDisable(param airwallex_struct.PaymentAcceptanceCustomersGenerateClientSecretReq, resp *airwallex_struct.PaymentAcceptanceCustomersGenerateClientSecretResp) error {
 	a.request = &request{
 		param:   param,
 		method:  apiPaths["PaymentAcceptance"]["PaymentConsents"]["Disable"].method,
@@ -161,7 +161,7 @@ func (a *airwallex) PaymentAcceptancePaymentConsentsDisable(param airwallex_stru
 }
 
 // PaymentAcceptancePaymentConsentsRetrieve 检索付款同意书 对应官网参照地址:https://www.airwallex.com/docs/api#/Payment_Acceptance/Payment_Consents/_api_v1_pa_payment_consents__id_/get
-func (a *airwallex) PaymentAcceptancePaymentConsentsRetrieve(param airwallex_struct.PaymentAcceptanceCustomersRetrieveReq, resp *airwallex_struct.PaymentAcceptanceCustomersRetrieveResp) error {
+func (a *Airwallex) PaymentAcceptancePaymentConsentsRetrieve(param airwallex_struct.PaymentAcceptanceCustomersRetrieveReq, resp *airwallex_struct.PaymentAcceptanceCustomersRetrieveResp) error {
 	a.request = &request{
 		method:  apiPaths["PaymentAcceptance"]["PaymentConsents"]["Retrieve"].method,
 		apiPath: fmt.Sprintf(apiPaths["PaymentAcceptance"]["PaymentConsents"]["Retrieve"].apiPath, param.Id),
@@ -174,7 +174,7 @@ func (a *airwallex) PaymentAcceptancePaymentConsentsRetrieve(param airwallex_str
 }
 
 // PaymentAcceptancePaymentConsentsGetList 获取付款同意书列表 对应官网参照地址:https://www.airwallex.com/docs/api#/Payment_Acceptance/Payment_Consents/_api_v1_pa_payment_consents/get
-func (a *airwallex) PaymentAcceptancePaymentConsentsGetList(param airwallex_struct.PaymentAcceptanceCustomersGetListReq, resp *airwallex_struct.PaymentAcceptanceCustomersGetListResp) error {
+func (a *Airwallex) PaymentAcceptancePaymentConsentsGetList(param airwallex_struct.PaymentAcceptanceCustomersGetListReq, resp *airwallex_struct.PaymentAcceptanceCustomersGetListResp) error {
 	a.request = &request{
 		param:   param,
 		method:  apiPaths["PaymentAcceptance"]["PaymentConsents"]["GetList"].method,
